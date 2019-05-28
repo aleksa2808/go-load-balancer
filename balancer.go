@@ -2,6 +2,7 @@ package main
 
 import (
 	"container/heap"
+	"fmt"
 )
 
 type balancer struct {
@@ -23,20 +24,20 @@ func Balance(work chan Request, nWorker, workerMaxLoad int) {
 	for {
 		// // simple visualisation for
 		// // a small number of workers
-		// for i := 0; i < 20; i++ {
-		// 	fmt.Println()
-		// }
-		// for id, w := range pool {
-		// 	fmt.Printf("%d: ", id)
-		// 	for i := 0; i < workerMaxLoad; i++ {
-		// 		if i < w.pending {
-		// 			fmt.Printf("%d ", i)
-		// 		} else {
-		// 			fmt.Print("_ ")
-		// 		}
-		// 	}
-		// 	fmt.Print("\n")
-		// }
+		for i := 0; i < 20; i++ {
+			fmt.Println()
+		}
+		for id, w := range pool {
+			fmt.Printf("%d: ", id)
+			for i := 0; i < workerMaxLoad; i++ {
+				if i < w.pending {
+					fmt.Printf("%d ", i)
+				} else {
+					fmt.Print("_ ")
+				}
+			}
+			fmt.Print("\n")
+		}
 
 		select {
 		case req := <-work:

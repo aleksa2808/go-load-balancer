@@ -33,8 +33,8 @@ func requester(id int, work chan<- Request) {
 }
 
 const (
-	nRequestors   = 50000
-	nWorkers      = 5000
+	nRequestors   = 20
+	nWorkers      = 5
 	workerMaxLoad = 10
 )
 
